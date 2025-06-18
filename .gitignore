@@ -1,0 +1,27 @@
+# Django
+# Ignore the database file
+db.sqlite3
+*.log
+
+# Python
+# Ignore bytecode and caches
+__pycache__/
+*.pyc
+
+# Environment variables
+# This file often contains secret keys and database passwords. NEVER upload it.
+.env
+
+# IDE-specific files
+# This ignores configuration files created by PyCharm
+.idea/
+
+# Static files collected by Django's collectstatic
+# You typically don't need to track the collected static files
+# as they are generated on the server during deployment.
+/staticfiles/
+
+# Media files
+# If your app allows users to upload files, they are usually stored here.
+# You don't want to track user-uploaded content in your code repository.
+/media/

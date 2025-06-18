@@ -1,0 +1,997 @@
+
+
+
+
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Christoph Trattner">
+
+    <title>News Survey</title><!-- page title -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-grid.css" rel="stylesheet">
+
+    <link href="css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+
+    <div class="container">
+
+        
+<style type="text/css">
+
+h1.likert-header {
+  padding-left:4.25%;
+  margin:20px 0 0;
+}
+form .statement {
+  display:block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 30px 0 0 4.25%;
+  margin-bottom:10px;
+}
+form .likert2 {
+  list-style:none;
+  width:100%;
+  margin:0;
+  padding:0 0 0px;
+  display:block;
+  border-bottom:2px solid #efefef;
+}
+form .likert2:last-of-type {border-bottom:0;}
+form .likert2:before {
+  content: '';
+  position:relative;
+  top:11px;
+  left:0%;
+  display:block;
+  background-color:#efefef;
+  height:4px;
+  width:77%;
+}
+form .likert2 li {
+  display:inline-block;
+  width:15%;
+  text-align:center;
+  vertical-align: top;
+}
+form .likert2 li input[type=radio] {
+  display:block;
+  position:relative;
+  top:0;
+  left:50%;
+  margin-left:-6px;
+  
+}
+form .likert li label {width:100%;}
+form .buttons {
+  margin:30px 0;
+  padding:0 4.25%;
+  text-align:right
+} 
+form .buttons button {
+  padding: 5px 10px;
+  background-color: #67ab49;
+  border: 0;
+  border-radius: 3px;
+} </style>
+
+
+<style type="text/css">
+h1.likert-header {
+  padding-left:4.25%;
+  margin:20px 0 0;
+}
+form .statement {
+  display:block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 30px 0 0 4.25%;
+  margin-bottom:10px;
+}
+form .likert {
+  list-style:none;
+  width:100%;
+  margin:0;
+  padding:0 0 0px;
+  display:block;
+  /* border-bottom:2px solid #efefef;*/
+}
+form .likert:last-of-type {border-bottom:0;}
+form .likert:before {
+  content: '';
+  position:relative;
+  top:11px;
+  left:0%;
+  display:block;
+  background-color:#efefef;
+  height:4px;
+  width:75%;
+}
+form .likert li {
+  display:inline-block;
+  width:18%;
+  text-align:center;
+  vertical-align: top;
+}
+form .likert li input[type=radio] {
+  display:block;
+  position:relative;
+  top:0;
+  left:50%;
+  margin-left:-6px;
+  
+}
+form .likert li label {width:100%;}
+form .buttons {
+  margin:30px 0;
+  padding:0 4.25%;
+  text-align:right
+} 
+form .buttons button {
+  padding: 5px 10px;
+  background-color: #67ab49;
+  border: 0;
+  border-radius: 3px;
+}
+
+
+.jumbotron {
+  padding: 2rem 2rem;
+}
+
+.text {
+  height: 200px;
+  overflow: hidden;
+}
+.text-container {
+  position: relative;
+}
+.text-container label {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+.text-container input {
+  display: none;
+}
+.text-container label:after {
+  content: "Show More";
+  text-decoration: underline;
+  color: green;
+}
+.text-container input:checked + label:after {
+  content: "Show Less";
+  color: gray;
+}
+.text-container input:checked ~ div {
+  height: 100%;
+}
+
+.text2 {
+  height: 200px;
+  overflow: hidden;
+}
+.text-container2 {
+  position: relative;
+}
+.text-container2 label {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+.text-container2 input {
+  display: none;
+}
+.text-container2 label:after {
+  content: "Show More";
+  text-decoration: underline;
+  color: green;
+}
+.text-container2 input:checked + label:after {
+  content: "Show Less";
+  color: gray;
+}
+.text-container2 input:checked ~ div {
+  height: 100%;
+}
+.separator {
+  border-bottom-style: solid;
+  border-width: 3px;
+  margin-bottom: 15px;
+}
+.grey-color {
+  color: #666;
+}
+
+/* The below use choice_evaluation.html*/
+.btn-lg {
+  border-color: #2c7460 !important;
+  background: #fbfbfb;
+  color: #1f4037;
+  /* padding:15px ; */
+  margin: auto;
+  /* #font-size: 20px; */
+  border: 0.10em solid;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px 8px 8px 8px;
+
+}
+
+.btn-lg:hover {
+  background-image: none !important;
+  background-color: #8bbdaf !important;
+  /* background-image: linear-gradient(-225deg, #c8e9da 0%, #bbd8e0 100%); */
+  color: rgb(233, 225, 225);
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  max-width: 1000px;
+  margin: auto;
+  border-radius: 12px 12px 12px 12px;
+  -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+  box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+  background: #fbfbfb;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+
+}
+
+
+
+.flabel {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding: auto;
+}
+
+.radios {
+  font-weight: bold;
+  color: rgb(12, 130, 248);
+  text-transform: uppercase;
+}
+
+#rq {
+  color: #0eaedf;
+}
+
+.input {
+
+  height: 15px;
+  width: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+.clabel {
+  color: #34495E;
+  padding: 0.5rem 0.25rem;
+}
+
+#error {
+  color: #e73b3b;
+  font-size: 12px !important;
+  text-align: left;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding: auto;
+
+}
+
+
+
+
+.hr-sect:after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 8px;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);
+}
+
+
+h5 {
+  overflow: hidden;
+  text-align: center;
+}
+
+h5:before,
+h5:after {
+  /* background-color: #000; */
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+  background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);
+
+}
+
+h5:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+h5:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+</style>
+
+<script language="javascript" type="text/javascript">
+
+  function checkedRadioBtn(sGroupName)
+  {   
+    var group = document.getElementsByName(sGroupName);
+    for ( var i = 0; i < group.length; i++) {
+      if (group.item(i).checked) {
+
+        return true;
+      } else if (group[0].type !== 'radio') {
+                //if you find any in the group not a radio button return null
+                return null;
+              }
+            }
+            return false;
+          }
+
+          function checkForm() {
+            if(checkedRadioBtn("sim") &&
+              checkedRadioBtn("fam1") && checkedRadioBtn("fam2") && checkedRadioBtn("conf"))  {
+              document.demo_form.action = "index.php";
+            document.demo_form.submit();
+          } else {
+            alert('Please checked that you have responded to the question!');
+          }
+        }
+      </script>
+
+
+
+      <div>
+
+        <form id="demo_form" name="demo_form" action="index.php" method="GET">
+          
+
+          <div align="center">
+
+            <div align="center">
+             <p class="lead">
+               <h1>[Question 1 / 10]</h1>
+               <h2>To what extent are the two news articles shown below similar?</h2>
+
+             </p>
+           </div>
+
+
+           <!-- <label class="statement">The two recipes presented above are:</label> -->
+           <ul class='likert'>
+            <li>
+              <input type="radio" name="sim" value="1">
+              <label>1 </br>(Completely different) </label>
+            </li>
+            <li>
+              <input type="radio" name="sim" value="2">
+              <label>2 </label>
+            </li>
+            <li>
+              <input type="radio" name="sim" value="3">
+              <label>3</label>
+            </li>
+            <li>
+              <input type="radio" name="sim" value="4">
+              <label>4</label>
+            </li>
+            <li>
+              <input type="radio" name="sim" value="5">
+              <label>5 </br>(They are more or less the same)</label>
+            </li>
+          </ul>
+
+
+          <p> (Scroll to the end of page to get to the next question)</p>
+        </div>
+
+        
+
+        <div class="row jumbotron">
+
+
+          <div class="col" style="background-color: #fcf8e3; padding-bottom: 10px;">
+            <div class="separator">
+              <h1>News 1</h1>
+            </div>
+            <span><strong>The Fix</strong></span>
+            <h1>Num instances {{newsList}}
+                <p>The Image in DB: {{imageKey.1}}</p>
+            <h3>The importance of ‘gifts’ to Latinos</h3>
+            <img style="max-width: 500px;" src="{{newsList.1}}"; class="img-fluid" title="/3573fce50ced7634815ffb0d73058496-0.jpeg">
+            <p class="grey-color">
+              Mitt Romney (Jim Young/Reuters) <br><br>          </p>
+          <p class="grey-color">By <strong>Aaron Blake</strong></p>
+          <p class="grey-color">2012-11-15 12:03:49</p>
+          <div class="text-container">
+            <input id="ch" type="checkbox">
+            <label for="ch"></label>
+            <div class="text" style="font-size: 18px">
+            Mitt Romney has found himself in the middle of the kind of controversy that is supposed to abate after a campaign. On a call with donors Wednesday, he blamed his loss on "gifts" -- in the form of official policies -- that President Obama bestowed on important voter blocs. <br><br> Most everybody agrees that Obama's decision to exempt young illegal immigrants from deportation helped him win a massive victory among Latinos. But Romney's inartful comment about "gifts" belies a more serious long-term problem for the GOP in appealing to Latinos. <br><br> The problem: Whether you call them "gifts" or "government services," they are very popular with Latinos. And that doesn't jibe with the core principles of the Republican Party. <br><br> Latinos are very much in line with the Democratic Party when it comes to how much government should do, as the chart below shows: <br><br> In addition, a recent Washington Post-Kaiser Family Foundation poll showed that while 55 percent of Americans generally prefer a "smaller federal government with fewer services," 67 percent of Latinos favor a "larger federal government with more services" -- about the same number as Democrats. <br><br> This is undoubtedly part of what worked for the Obama campaign last Tuesday. It may have seemed a little foolhardy during the campaign for Obama to prosecute the case for a more active government when most Americans want small government, but that message appealed big time to Latinos and was apparently acceptable to enough independents in the middle. <br><br> We've seen several big name Republicans in recent days cautioning that the party shouldn't expect all of its problems with Latinos to disappear the moment immigration reform is passed. <br><br> "Don’t think that’s the panacea, and that every Hispanic is going to switch with immigration reform,” Sen. John McCain (R-Ariz.) said Wednesday at the Washington Ideas Forum. “We still have a lot of work to do." <br><br> Former Arkansas governor Mike Huckabee (R) agreed in his appearance on the "Daily Show" earlier this week, alluding to the role-of-government debate. <br><br> "I think the fact is Republicans have done a pathetic job of communicating what conservativism does to empower people and how it helps people to move from one rung of the ladder to the next," Huckabee said. <br><br> Huckabee is essentially blaming the fact that Latinos prefer bigger government on the GOP's lack of a coherent message. <br><br> There is actually some evidence of progress on that front, however, as the number of Latinos who said the "government is doing too much" doubled between 2008 and 2012, from 18 percent to 36 percent. <br><br> But Republicans are still very much fighting a losing battle. And given that Latinos are overwhelmingly among the poorest Americans, government services will continue to have appeal. <br><br> This is a big reason why we've seen such a swift GOP backlash against Romney for his comments. The "47 percent" and "gifts" rhetoric can be hugely harmful to this effort, and Republicans want to put it behind them in a hurry. <br><br> The GOP may correct its course on immigration reform in the coming weeks and months; convincing Latinos to buy into its small-government philosophy will take considerably more time. <br><br><strong>Aaron Blake</strong><br>Aaron Blake is senior political reporter for The Fix. <br> </p>
+          </div>
+          </div>
+          
+        </div>
+
+        <div class="col" style="background-color: #bcdff1; padding-bottom: 10px;">
+          <div class="separator">
+            <h1>News 2</h1>
+          </div>
+          <span><strong>Wonkblog</strong></span>
+          <h3>Republicans advance Mnuchin for Treasury, despite Democrats’ boycott of the vote</h3>
+          
+          <img style="max-width: 500px;" src="/news-study/images/248788276f04a0fcbdc02577f680470b-0.jpeg"; class="img-fluid" title="/248788276f04a0fcbdc02577f680470b-0.jpeg">
+          <p class="grey-color">
+            Steven Mnuchin speaks during his confirmation hearing in D.C. on Jan. 19. (Andrew Harrer/Bloomberg) <br><br>        </p>
+        <p class="grey-color">By <strong>Max Ehrenfreund</strong></p>
+        <p class="grey-color">2017-02-01 12:16:38</p>
+        <div class="text-container2">
+          <input id="ch2" type="checkbox">
+          <label for="ch2"></label>
+          <div class="text2" style="font-size: 18px">
+            Republicans in the Senate Committee on Finance advanced President Trump's nominee for treasury secretary on Wednesday, suspending the committee's rules in response to a boycott by Democratic lawmakers. <br><br> The vote by Republicans in the committee was unanimous. They decried the Democrats' decision to boycott the vote initially scheduled on Tuesday as pointless obstructionism. <br><br> “We can have our disagreements,” said Sen. Orrin G. Hatch (R-Utah), the chairman of the committee. “To differ, that’s one thing. I can live with that. I’ve differed myself from time to time. But I’ve always shown up.” <br><br> Lawmakers had questioned the nominee, Steven T. Mnuchin, about foreclosures conducted by his former bank, OneWest. OneWest employees have alleged in federal court that the bank had mishandled paperwork on thousands of homes, which could have resulted in eviction for some borrowers. <br><br> Sen. Dean Heller, the Republican from Nevada, noted that his state was among the most severely affected by the housing crisis, during the hearing on Mnuchin's confirmation last month. Heller asked Mnuchin, a former banker at Goldman Sachs, for detailed information about how OneWest — the bank formerly known as IndyMac that Mnuchin purchased from the federal government in 2009 — had handled its loans in Nevada. <br><br> “We led the country in bankruptcies, foreclosures and unemployment, so you can imagine that we’re a little sensitive to who becomes the next treasury secretary,” Heller told Mnuchin, who had been dubbed “the Foreclosure King” by his critics during the crisis. <br><br> The following week, a report from the Columbus Dispatch described cases in Ohio in which judges had dismissed foreclosure proceedings brought by OneWest because of inaccurate paperwork. <br><br> While documents in foreclosure proceedings are supposed to be read carefully by bank officials to ensure they are correct, banks often asked employees to sign hundreds of such papers a week — a practice known as “robo-signing.” The Dispatch reported that one employee who had signed papers foreclosing on Ohio homeowners testified that she regularly signed 750 foreclosure documents a week. <br><br> In his initial written testimony to the committee, however, Mnuchin stated that OneWest did not engage in robo-signing. Later, Mnuchin submitted an amended response claiming that OneWest filed erroneous paperwork on only a small number of borrowers who were properly remediated, Bloomberg reported. <br><br> On Wednesday, both Heller and Sen. Rob Portman, the Republican from Ohio, voted to approve Mnuchin's nomination in committee. <br><br> “Mnuchin committed to working with me to reform our broken tax code and crack down on unfair imports, and I look forward to working with him to accomplish those goals,” Portman said in a statement Wednesday. <br><br> Democrats said concerns about the truthfulness of Mnuchin's statements necessitated a delay. <br><br> “Mnuchin profited off of kicking people out of their homes and then gave false testimony about his bank's abusive practices,” said Sen. Sherrod Brown (D-Ohio) in a statement. <br><br> Democrats also boycotted a vote on the nomination of Rep. Tom Price (R-Tex.) for secretary of health and human services. The full Senate will now consider both men for a final vote on their confirmations. <br><br> More from The Washington Post: <br><br> Republicans ram through committee approval of Trump Cabinet  <br><br> Treasury nominee initially omitted more than $100 million from disclosures, Democratic memo says <br><br> Opinion: Will some members of Trump’s Cabinet realize they’re being used? <br><br><script>console.log("<")</script><strong>Max Ehrenfreund</strong><br>Max Ehrenfreund writes for Wonkblog and compiles Wonkbook, a daily policy newsletter. Before joining The Washington Post, Ehrenfreund wrote for the Washington Monthly and The Sacramento Bee. <br> </p>
+          </div>
+        </div>
+      </p>
+
+
+    </div>
+
+
+
+  </div>
+
+  <div align="center">
+   <h2>Please complete the questionnaire below!</h2>
+   <hr>
+
+          <!-- <h5>To what extent do you agree with the following statements:</h5>
+
+I looked at the <b>movie title</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="title" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="title" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="title" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="title" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="title" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+
+I looked at the <b>movie image</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="image" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="image" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="image" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="image" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="image" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+
+I looked at the <b>plot text</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="overview" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="overview" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="overview" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="overview" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="overview" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+
+
+I looked at the <b>genre</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="genre" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="genre" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="genre" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="genre" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="genre" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+    
+    
+    I looked at the <b>director(s)</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="director" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="director" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="director" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="director" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="director" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+    
+    I looked at the <b>release date</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="date" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="date" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="date" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="date" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="date" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+    
+    I looked at the <b>stars</b> to estimate the similarity between the movies:
+<ul class='likert'>
+      <li>
+        <input type="radio" name="cast" value="1">
+        <label>1 <br>(Totally Disagree)</label>
+      </li>
+      <li>
+        <input type="radio" name="cast" value="2">
+        <label>2</label>
+      </li>
+      <li>
+        <input type="radio" name="cast" value="3">
+        <label>3</label>
+      </li>
+      <li>
+        <input type="radio" name="cast" value="4">
+        <label>4</label>
+      </li>
+      <li>
+        <input type="radio" name="cast" value="5">
+        <label>5 <br>(Totally Agree)</label>
+      </li>
+    </ul>
+    
+     <hr>
+   -->
+
+
+
+
+
+
+  
+   <h5>To what extent are you familiar with News 1 shown above:</h5>
+
+   <ul class='likert'>
+    <li>
+      <input type="radio" name="fam1" value="1">
+      <label>1 <br>(Not at all)</label>
+    </li>
+    <li>
+      <input type="radio" name="fam1" value="2">
+      <label>2</label>
+    </li>
+    <li>
+      <input type="radio" name="fam1" value="3">
+      <label>3</label>
+    </li>
+    <li>
+      <input type="radio" name="fam1" value="4">
+      <label>4</label>
+    </li>
+    <li>
+      <input type="radio" name="fam1" value="5">
+      <label>5 <br>(Very familiar)</label>
+    </li>
+  </ul>
+
+  <h5>To what extent are you familiar with News 2 shown above:</h5>
+
+  <ul class='likert'>
+    <li>
+      <input type="radio" name="fam2" value="1">
+      <label>1 <br>(Not at all)</label>
+    </li>
+    <li>
+      <input type="radio" name="fam2" value="2">
+      <label>2</label>
+    </li>
+    <li>
+      <input type="radio" name="fam2" value="3">
+      <label>3</label>
+    </li>
+    <li>
+      <input type="radio" name="fam2" value="4">
+      <label>4</label>
+    </li>
+    <li>
+      <input type="radio" name="fam2" value="5">
+      <label>5 <br>(Very familiar)</label>
+    </li>
+  </ul>
+
+  <h5>On a scale of 1-5, how confident are you of your provided similarity rating:</h5>
+
+  <ul class='likert'>
+    <li>
+      <input type="radio" name="conf" value="1">
+      <label>1 <br>(Not at all)</label>
+    </li>
+    <li>
+      <input type="radio" name="conf" value="2">
+      <label>2</label>
+    </li>
+    <li>
+      <input type="radio" name="conf" value="3">
+      <label>3</label>
+    </li>
+    <li>
+      <input type="radio" name="conf" value="4">
+      <label>4</label>
+    </li>
+    <li>
+      <input type="radio" name="conf" value="5">
+      <label>5 <br>(Absolutely confident)</label>
+    </li>
+  </ul>
+
+
+
+
+
+
+</div>
+
+<hr />
+
+
+<div align="center">
+  <input type="hidden" id="user_id" name="user_id" value="df1avf8o6i990s5mp7juac8av7" />
+      <input type="hidden" name="next_step" value="survey" />
+
+    <input type="hidden" name="step" value="2" />
+  <input type="hidden" name="pair" value="3573fce50ced7634815ffb0d73058496;248788276f04a0fcbdc02577f680470b" />
+
+  <input type="hidden" name="survey_id" value="5b4126d935hjd0gv1000001x" />
+
+  <button type="button" class="btn btn-lg btn-success" onclick="javascript:checkForm();">Next >> </button>
+
+</div>
+</form>
+
+</div>
+<br />
+<br />
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- The below is from choice_evaluation.html-->
+
+
+<form action="" method="POST">
+      {% csrf_token %}
+      <div>
+          <h3 style="font-size: 40px;
+      font-weight: 400;
+      line-height: 30px;
+      font-style: bold; margin-top: 30px;">Final Propositions !</h3>
+          <h6>Presented below are propositions about the news you have just chosen and the decision-making process. For each proposition, please indicate to what extent you agree with it or not.</h6>
+      </div>
+      <br>
+      <h5> READ, TRUST, AGREE, RECOMEND</h5>
+
+      <!-- ------------------------ liked_recipes -------------------------->
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.liked_news.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.liked_news.errors}}
+          {% for radio in eval_form.liked_news%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+      </div>
+
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.prepare_recipes.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.prepare_recipes.errors}}
+          {% for radio in eval_form.prepare_recipes%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+      </div>
+
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.fit_preference.label}} </b></p>
+      </div>
+      <div>
+
+          {{eval_form.fit_preference.errors}}
+          {% for radio in eval_form.fit_preference%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -30px;">
+          <p><b> {{eval_form.know_many.label}} </b></p>
+      </div>
+      <div>
+
+          {{eval_form.know_many.errors}}
+          {% for radio in eval_form.know_many%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.recommend_recipe.label}} </b></p>
+      </div>
+      <div>
+
+          {{eval_form.recommend_recipe.errors}}
+          {% for radio in eval_form.recommend_recipe%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+      
+
+      <hr style="color: white;">
+      <!--<h5>Choice Difficulty</h5>-->        
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.many_to_choose.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.many_to_choose.errors}}
+          {% for radio in eval_form.many_to_choose%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.easy_choice.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.easy_choice.errors}}
+          {% for radio in eval_form.easy_choice%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.choice_overwhelming.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.choice_overwhelming.errors}}
+          {% for radio in eval_form.choice_overwhelming%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+      <hr style="color: white;">
+      <!--<h5>Perceived effort</h5>-->  
+      
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.sys_time.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.sys_time.errors}}
+          {% for radio in eval_form.sys_time%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.unders_sys.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.unders_sys.errors}}
+          {% for radio in eval_form.unders_sys%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+
+
+      <div class="flabel" style="margin-top: 15px; margin-bottom: -2px;">
+          <p><b> {{eval_form.many_actions.label}} </b></p>
+      </div>
+      <div>
+          {{eval_form.many_actions.errors}}
+          {% for radio in eval_form.many_actions%}
+          <label style="padding: 6px; font-weight: 500; margin-left: 12px;" for="{{radio.id_for_label}}">
+
+              <span> {{radio.tag}}</span> <span class="clabel"> {{radio.choice_label}} </span>
+          </label>
+          {% endfor %}
+
+      </div>
+
+
+      <hr style="  border: 0; 
+      height: 1px; 
+      background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);" />
+
+      <!------------------------- Next --------------------------->
+      <div style="text-align: right; margin-bottom:30px; margin-top:30px;">
+
+          <button type="submit " name="submit" class="btn-lg col-4"> Finish </buttton>
+      </div>
+
+</form>
+</div>
+
+
+
+
+
+</body>
+
+</html>

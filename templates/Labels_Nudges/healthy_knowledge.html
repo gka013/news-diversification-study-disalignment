@@ -1,0 +1,429 @@
+<!------------------------- GHS_FK FORM --------------------------->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>News Research</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+    <link rel="shortcut icon" href="{% static 'icon/icon.png' %}">
+    <script type="text/javascript">
+        /*Scroll to top when arrow up clicked BEGIN*/
+        $(window).scroll(function () {
+            var height = $(window).scrollTop();
+            if (height > 100) {
+                $('#back2Top').fadeIn();
+            } else {
+                $('#back2Top').fadeOut();
+            }
+        });
+        $(document).ready(function () {
+            $("#back2Top").click(function (event) {
+                event.preventDefault();
+                $("html, body").animate({
+                    scrollTop: 0
+                }, "slow");
+                return false;
+            });
+
+        });
+        /*Scroll to top when arrow up clicked END*/
+    </script>
+
+
+    <style>
+        #back2Top {
+            width: 40px;
+            line-height: 40px;
+            overflow: hidden;
+            z-index: 999;
+            position: fixed;
+            cursor: pointer;
+            -moz-transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+            /* position: fixed; */
+            bottom: 10px;
+            right: 0;
+            /* background-image: linear-gradient(-225deg, #B7F8DB 0%, #a1d8e9 100%); */
+            color: rgb(61, 57, 57);
+            text-align: center;
+            font-size: 30px;
+            text-decoration: none;
+            border-radius: 12px 12px 12px 12px;
+        }
+
+        #back2Top:hover {
+            background-color: rgb(155, 155, 175);
+            color: #000;
+        }
+
+        body {
+            background-image: linear-gradient(-225deg, #14213d 0%, #14213d 100%);
+
+
+        {% static 'back/person_info.jpg' %} ") no-repeat center center fixed; */ /* -webkit-background-size: cover; -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            */ /* background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%); */ font-family: 'Nunito', sans-serif;
+            padding-top: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+            padding-bottom: 15px;
+            min-height: 100vh;
+        }
+
+        .btn-lg {
+            border-color: #2c7460 !important;
+            background: #fbfbfb;
+            color: #1f4037;
+            /* padding:15px ; */
+            margin: auto;
+            /* #font-size: 20px; */
+            border: 0.10em solid;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px 8px 8px 8px;
+
+        }
+
+        .btn-lg:hover {
+            background-image: none !important;
+            background-color: #8bbdaf !important;
+            /* background-image: linear-gradient(-225deg, #c8e9da 0%, #bbd8e0 100%); */
+            color: rgb(233, 225, 225);
+
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+            max-width: 800px;
+            margin: auto;
+            border-radius: 12px 12px 12px 12px;
+            -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            background: #fbfbfb;
+            box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+
+        }
+
+
+        .flabel {
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            padding: auto;
+        }
+
+        .radios {
+            font-weight: bold;
+            color: rgb(12, 130, 248);
+            text-transform: uppercase;
+        }
+
+        #rq {
+            color: #0eaedf;
+        }
+
+        .input {
+
+            height: 15px;
+            width: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        .clabel {
+            color: #34495E;
+            padding: 0.5rem 0.25rem;
+        }
+
+        #error {
+            color: #e73b3b;
+            font-size: 12px !important;
+            text-align: left;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            padding: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div>
+        <h4 style="font-size: 30px;
+        font-weight: 380;
+        line-height: 30px;
+        font-style: bold; margin-top: 30px;">Measurement</h4>
+
+        <h4 style="font-size: 20px;
+        font-weight: 350;
+        line-height: 30px;
+        font-style: bold; margin-top: 10px;">Below are 10 statements intended to measure your current emotional state.
+            Please read each
+            statement carefully and indicate to which extent you agree or disagree with each statement.</h4>
+    </div>
+    <hr style="  border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);"/>
+    <div>
+        <form action="" method="POST">
+
+            {% csrf_token %}
+            <!------------------------- FK_1 --------------------------->
+            <p style="font-size: 20px;
+        line-height: 30px;margin-top: 10px;"><b>Thinking about yourself, please rate to what extent you feel the
+                following emotions.</b></p>
+            <div class="flabel" style="margin-top:15px;">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_1.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_1 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_2 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_2.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_2 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_3 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-9 flabel" style="white-space: nowrap"><b>{{ form.FK_3.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_3 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_4 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_4.label }} </b></p>
+            </div>
+
+
+            <div>
+                <div>
+                    {% for radio in form.FK_4 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+
+            {#            <hr style="  border: 0;#}
+            {#        height: 1px;#}
+            {#        background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);"/>#}
+
+            <!------------------------- FK_5 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_5.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_5 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+
+            <!------------------------- FK_6 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-10 flabel" style="white-space: nowrap"><b>{{ form.FK_6.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_6 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_7 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_7.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_7 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+
+            <!------------------------- FK_8 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-8 flabel" style="white-space: pre; text-align: left;"><b>{{ form.FK_8.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_8 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            {#            <hr style="  border: 0;#}
+            {#        height: 1px;#}
+            {#        background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);"/>#}
+            <!------------------------- FK_9 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-9 flabel" style="white-space: nowrap"><b>{{ form.FK_9.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_9 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_10 --------------------------->
+            <div class="flabel" style="padding-top: 15px;">
+                <p class="col-sm-11 flabel" style="white-space: nowrap"><b>{{ form.FK_10.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_10 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_11 --------------------------->
+            <div class="flabel" style="padding-top: 0;">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_11.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_11 %}
+                        <label style="padding: 0; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!------------------------- FK_12 --------------------------->
+            <div class="flabel" style="padding-top: 0">
+                <p class="col-sm-8 flabel" style="white-space: nowrap"><b>{{ form.FK_12.label }} </b></p>
+            </div>
+            <div>
+                <div>
+                    {% for radio in form.FK_12 %}
+                        <label style="padding: 2px; font-weight: 500; margin-left: 12px;"
+                               for="{{ radio.id_for_label }}">
+
+                            <span> {{ radio.tag }}</span> <span class="clabel"> {{ radio.choice_label }} </span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+
+            <hr style="  border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);"/>
+
+            <!------------------------- Next --------------------------->
+            <div style="text-align: right; margin-bottom:15px; margin-top:15px;">
+
+                <button type="submit " name="submit" class="btn-lg col-4"> Next </buttton>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<a id="back2Top" title="Back to top" href="#">&#10148;</a>
+<footer>
+    <p class="copyright" style="position:relative;
+        color: #e4dcdc;
+        bottom: 0;
+
+        "> &#169; DARS RESEARCH GROUP</p>
+</footer>
+</body>
+
+</html>

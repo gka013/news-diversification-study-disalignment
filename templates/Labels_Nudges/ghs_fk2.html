@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Article Evaluation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Nunito Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      body { margin:0; padding:0; background:#f7f7f7; font-family:'Nunito Sans',sans-serif; color:#333; }
+      .step-indicator { display:flex; align-items:center; justify-content:center; margin-bottom:30px; }
+      .step { text-align:center; flex:1; position:relative; }
+      .step-number { background:#e2e2e2; border-radius:50%; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; font-weight:600; color:#666; margin-bottom:5px; }
+      .step.active .step-number { background:#007bff; color:#fff; }
+      .step.completed .step-number { background:#28a745; color:#fff; }
+      .step-title { font-size:0.9rem; color:#666; }
+      .step::after { content:''; position:absolute; width:100%; height:2px; background:#e2e2e2; top:16px; left:-50%; z-index:-1; }
+      .step:first-child::after { content:none; }
+      .step.active::after, .step.completed::after { background:#007bff; }
+
+      .card { border:none; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow:hidden; background:#fff; }
+      .card-header, .card-body { padding:24px; }
+      .card-header { border-bottom:1px solid #eee; }
+      .card-title { margin:0; font-weight:600; }
+      .card-body { border-bottom-left-radius:10px; border-bottom-right-radius:10px; }
+
+      .question-group { background:#eef6fc; border-radius:8px; padding:20px; margin-bottom:20px; }
+      .question-group h5 { margin-top:0; font-weight:600; color:#0056b3; }
+
+      .form-label { font-weight:500; color:#333; display:block; margin-bottom:.5rem; }
+
+      /* Tighten up the radio row and prevent wrapping */
+      .radio-row {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .form-check {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+      }
+      .form-check-label {
+        margin-left: .5rem;
+        margin-bottom: 0;
+        font-weight:500;
+        white-space: nowrap;
+      }
+
+      .btn-primary { background:#007bff; border:none; border-radius:6px; font-weight:600; padding:10px 20px; }
+      .btn-primary:hover { background:#0056b3; }
+      footer { text-align:center; margin:30px 0; color:#666; font-size:.9rem; }
+    </style>
+</head>
+<body>
+  <div class="container" style="max-width:750px; margin:40px auto;">
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step completed"><div class="step-number">1</div><div class="step-title">Start</div></div>
+      <div class="step completed"><div class="step-number">2</div><div class="step-title">Personal Info</div></div>
+      <div class="step completed"><div class="step-number">3</div><div class="step-title">News Preferences</div></div>
+      <div class="step active"><div class="step-number">4</div><div class="step-title">Evaluation</div></div>
+      <div class="step"><div class="step-number">5</div><div class="step-title">Finished</div></div>
+    </div>
+
+    <!-- Evaluation Card -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Article Evaluation</h3>
+        <p class="text-muted mb-0">
+          Below are statements about the <strong>articles recommended for you</strong>
+            our system selected specifically for you. Please indicate how much you
+          agree or disagree.
+        </p>
+      </div>
+
+      <div class="card-body">
+        <form method="POST" action="">
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+              {% for err in form.non_field_errors %}{{ err }}<br>{% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Group 1: Reflect on Your Recommended Articles -->
+          <div class="question-group">
+            <h5>Reflect on Your Recommended Articles</h5>
+            {% for field in fields|slice:":4" %}
+              <div class="mb-4">
+                <label class="form-label"><strong>{{ field.label }}</strong></label>
+                <div class="radio-row">
+                  {% for radio in field %}
+                    <div class="form-check">
+                      {{ radio.tag }}
+                      <label class="form-check-label" for="{{ radio.id_for_label }}">
+                        {{ radio.choice_label }}
+                      </label>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Group 2: Recommendation Quality -->
+          <div class="question-group">
+            <h5>Recommendation Quality</h5>
+            {% for field in fields|slice:"4:7" %}
+              <div class="mb-4">
+                <label class="form-label"><strong>{{ field.label }}</strong></label>
+                <div class="radio-row">
+                  {% for radio in field %}
+                    <div class="form-check">
+                      {{ radio.tag }}
+                      <label class="form-check-label" for="{{ radio.id_for_label }}">
+                        {{ radio.choice_label }}
+                      </label>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Group 3: Perceived Diversity of Recommendations -->
+          <div class="question-group">
+            <h5>Perceived Diversity of Recommendations</h5>
+            {% for field in fields|slice:"7:" %}
+              <div class="mb-4">
+                <label class="form-label"><strong>{{ field.label }}</strong></label>
+                <div class="radio-row">
+                  {% for radio in field %}
+                    <div class="form-check">
+                      {{ radio.tag }}
+                      <label class="form-check-label" for="{{ radio.id_for_label }}">
+                        {{ radio.choice_label }}
+                      </label>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Next Button -->
+          <div class="text-end mt-4">
+            <button type="submit" class="btn btn-primary">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>&copy; DARS RESEARCH GROUP</footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

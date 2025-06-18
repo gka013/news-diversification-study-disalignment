@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Survey - Demographics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+
+  <!-- Google Font: Nunito Sans -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      font-family: 'Nunito Sans', sans-serif;
+      color: #333;
+    }
+    .step-indicator { display: flex; align-items: center; justify-content: center; margin-bottom: 30px; }
+    .step { text-align: center; flex: 1; position: relative; }
+    .step-number { background-color: #e2e2e2; border-radius: 50%; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; color: #666; margin-bottom: 5px; }
+    .step.active .step-number { background-color: #007bff; color: #fff; }
+    .step.completed .step-number { background-color: #28a745; color: #fff; }
+    .step-title { font-size: 0.9rem; color: #666; }
+    .step::after { content: ''; position: absolute; width: 100%; height: 2px; background-color: #e2e2e2; top: 16px; left: -50%; z-index: -1; }
+    .step:first-child::after { content: none; }
+    .step.active::after, .step.completed::after { background-color: #007bff; }
+    .card { border: none; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background-color: #fff; }
+    .card-header, .card-body { padding: 24px; }
+    .card-header { border-bottom: 1px solid #eee; }
+    .card-title { margin: 0; font-weight: 600; }
+    .form-label { font-weight: 500; color: #333; }
+    .form-check-label { margin-left: 5px; }
+    .form-control, .form-select { border-radius: 6px; }
+    .btn-primary { background-color: #007bff; border: none; border-radius: 6px; font-weight: 600; padding: 10px 20px; }
+    .btn-primary:hover { background-color: #0056b3; }
+    footer { text-align: center; margin: 30px 0; color: #666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 700px; margin: 40px auto;">
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step completed">
+        <div class="step-number">1</div>
+        <div class="step-title">Start</div>
+      </div>
+      <div class="step active">
+        <div class="step-number">2</div>
+        <div class="step-title">Personal Info</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-title">News Preferences</div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-title">Evaluation</div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-title">Finish</div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Demographic Information</h3>
+        <p class="text-muted mb-0">
+          Please answer the following questions about yourself. Your responses are anonymous and cannot be traced back to you.
+        </p>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="">
+          {% csrf_token %}
+
+
+          <!-- Gender Field -->
+          <div class="mb-3">
+            <label class="form-label"><strong>{{ form.gender.label }}</strong></label>
+            <div>
+              {{ form.gender.errors }}
+              {% for radio in form.gender %}
+                <div class="form-check form-check-inline">
+                  {{ radio.tag }}
+                  <label class="form-check-label" for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Age Field -->
+          <div class="mb-3">
+            <label class="form-label"><strong>{{ form.age.label }}</strong></label>
+            {{ form.age }}
+            {{ form.age.errors }}
+          </div>
+
+          <!-- Country of Residence Field -->
+          <div class="mb-3">
+            <label class="form-label"><strong>{{ form.country.label }}</strong></label>
+            {{ form.country }}
+            {{ form.country.errors }}
+          </div>
+
+          <!-- Education Field -->
+          <div class="mb-3">
+            <label class="form-label"><strong>{{ form.education.label }}</strong></label>
+            {{ form.education }}
+            {{ form.education.errors }}
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>&#169; DARS RESEARCH GROUP</footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

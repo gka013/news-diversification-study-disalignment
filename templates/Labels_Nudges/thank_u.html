@@ -1,0 +1,52 @@
+{# templates/Labels_Nudges/thank_u.html #}
+{% extends "Labels_Nudges/main.html" %}
+{% block content %}
+<div class="container" style="max-width:750px; margin:40px auto;">
+
+  <!-- Header -->
+  <h1 class="text-center mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">
+    Thank You for Your Participation
+  </h1>
+
+  <!-- Info Card -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <p>
+        We appreciate you taking the time to contribute to our study. Your
+        participation helps us understand how to present news content more
+        effectively.
+      </p>
+      <p>
+        If you have any questions about the study, please contact
+        <a href="mailto:gka013@uib.no">Gloria Kasangu</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Claim Reward Card -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body text-center">
+      <h2 class="card-title mb-3">Ready to Claim Your Final Reward?</h2>
+      <p class="text-muted mb-4">
+        Click the button below to be redirected to Prolific and complete your submission.
+      </p>
+      <a href="{{ complete_url }}"
+         class="btn btn-primary btn-lg w-100">
+        Claim Final Reward
+      </a>
+    </div>
+  </div>
+
+  <!-- Back to Home -->
+  <div class="text-center">
+    <a href="{% url 'Labels_Nudges:home' %}"
+       class="btn btn-outline-secondary">
+      Return to Home
+    </a>
+  </div>
+
+  <footer class="text-center text-muted small mt-5">
+    &copy; DARS RESEARCH GROUP
+  </footer>
+</div>
+{% endblock %}

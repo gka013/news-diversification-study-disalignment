@@ -1,0 +1,504 @@
+id,Average Rating,calories_kCal,Servings,Average Sentiment,recipe_prep_time,#ingredient,category
+3763,4.78,1043,4,2.18,20,19,Barbecue
+3943,4.73,418,5,2.24,25,15,Barbecue
+4137,4.52,537,6,2.04,25,10,Barbecue
+104,4.41,870,4,1.98,15,9,Barbecue
+56,4.75,882,4,2.15,10,5,Barbecue
+1815,4.38,676,4,1.86,10,11,Barbecue
+2887,4.45,510,4,1.8,20,13,Barbecue
+926,4.53,396,8,1.98,30,8,Barbecue
+809,4.68,664,4,1.9,10,14,Barbecue
+103,4.75,318,6,2.17,15,5,Barbecue
+1855,4.55,446,4,1.95,5,8,Barbecue
+3102,4.52,404,6,2.13,15,6,Barbecue
+129,4.6,446,6,2.06,25,5,Barbecue
+3410,4.68,551,1,2.05,10,7,Barbecue
+206,4.68,514,8,1.72,30,5,Barbecue
+1326,4.66,586,4,2.12,15,8,Barbecue
+838,4.49,455,4,1.74,15,4,Barbecue
+1431,4.44,576,2,1.91,15,12,Barbecue
+141,4.45,393,4,1.92,10,7,Barbecue
+6674,4.73,588,8,1.82,30,17,Barbecue
+1165,4.76,551,4,2.25,15,12,Barbecue
+5363,4.47,342,4,1.67,15,6,Barbecue
+5567,4.5,644,4,1.95,10,7,Barbecue
+1020,4.58,549,4,1.94,15,8,Barbecue
+1639,4.5,338,4,2.19,10,11,Barbecue
+3783,4.49,388,6,2.19,15,7,Barbecue
+1171,4.64,681,8,1.73,10,12,Barbecue
+2055,4.6,382,10,1.9,5,7,Barbecue
+1760,4.51,452,2,1.94,5,9,Barbecue
+4568,4.47,467,4,2.09,10,9,Barbecue
+204,4.44,450,6,1.92,5,6,Barbecue
+980,4.69,714,4,2.04,25,12,Barbecue
+3081,4.63,398,2,2.07,15,7,Barbecue
+2576,4.58,378,6,2.0,15,11,Barbecue
+788,4.67,560,10,1.71,10,12,Barbecue
+3195,4.29,297,10,1.71,15,9,Barbecue
+770,3.94,445,4,1.6,10,13,Barbecue
+1304,4.69,742,2,1.65,15,7,Barbecue
+5471,4.41,426,10,1.63,60,19,Barbecue
+609,4.72,378,6,2.24,50,10,Barbecue
+1952,4.63,434,3,1.93,30,9,Barbecue
+953,4.61,275,6,2.05,15,9,Barbecue
+2039,4.78,447,6,2.15,30,10,Barbecue
+3923,4.68,764,4,1.96,30,22,Barbecue
+3469,4.63,544,4,2.09,25,9,Barbecue
+340,4.43,404,4,1.96,30,19,Barbecue
+5967,4.67,590,4,2.27,15,9,Barbecue
+4894,4.67,438,6,2.34,15,9,Barbecue
+1648,4.47,367,4,1.95,15,9,Barbecue
+3459,4.62,482,4,1.99,5,9,Barbecue
+2822,4.63,463,6,2.2,15,8,Fruits and Vegetables
+1470,4.24,660,6,1.75,10,13,Fruits and Vegetables
+259,4.49,814,4,2.14,20,8,Fruits and Vegetables
+2505,4.25,397,7,1.9,15,4,Fruits and Vegetables
+265,4.45,692,2,1.75,10,10,Fruits and Vegetables
+2022,4.47,407,8,2.07,20,9,Fruits and Vegetables
+266,4.34,619,8,1.58,20,17,Fruits and Vegetables
+661,4.39,1595,6,1.75,20,19,Fruits and Vegetables
+1079,4.79,509,2,2.03,10,9,Fruits and Vegetables
+2359,4.52,930,4,1.85,5,7,Fruits and Vegetables
+8867,3.95,397,4,1.75,15,11,Fruits and Vegetables
+3729,4.31,685,4,1.97,20,11,Fruits and Vegetables
+2794,4.14,378,8,1.68,30,13,Fruits and Vegetables
+5909,4.53,653,8,2.06,20,9,Fruits and Vegetables
+270,4.55,449,4,1.94,25,6,Fruits and Vegetables
+117,4.64,513,6,2.17,15,7,Fruits and Vegetables
+1541,4.52,408,4,1.98,10,22,Fruits and Vegetables
+1452,4.49,774,2,2.01,15,7,Fruits and Vegetables
+486,4.31,371,6,1.81,20,11,Fruits and Vegetables
+188,4.37,387,6,1.76,15,8,Fruits and Vegetables
+3110,4.42,660,4,1.66,15,9,Fruits and Vegetables
+3005,4.63,356,6,1.97,20,7,Fruits and Vegetables
+3527,4.58,455,4,2.16,10,11,Fruits and Vegetables
+2262,4.33,456,6,1.89,30,4,Fruits and Vegetables
+107,4.74,461,6,2.21,15,10,Fruits and Vegetables
+603,4.5,454,4,1.88,15,7,Fruits and Vegetables
+281,4.53,320,4,1.9,10,5,Fruits and Vegetables
+513,4.61,576,6,2.07,20,12,Fruits and Vegetables
+1674,4.68,462,12,2.29,25,12,Fruits and Vegetables
+261,4.39,420,6,1.94,15,5,Fruits and Vegetables
+7122,4.55,671,4,2.22,10,9,Fruits and Vegetables
+5327,4.54,391,4,1.96,20,8,Fruits and Vegetables
+3443,4.32,506,12,1.88,30,9,Fruits and Vegetables
+1117,4.48,677,8,2.03,30,14,Fruits and Vegetables
+861,4.59,400,8,2.15,15,10,Fruits and Vegetables
+714,4.46,562,6,1.9,30,13,Fruits and Vegetables
+1185,4.73,935,2,2.01,20,15,Fruits and Vegetables
+4554,4.52,431,6,2.03,30,16,Fruits and Vegetables
+6460,4.42,477,8,1.8,20,8,Fruits and Vegetables
+174,4.14,756,8,1.57,15,10,Fruits and Vegetables
+11194,4.57,434,4,1.89,30,13,Fruits and Vegetables
+1636,4.67,425,6,2.33,10,6,Fruits and Vegetables
+272,4.38,398,4,2.04,5,9,Fruits and Vegetables
+228,4.36,445,4,1.89,40,18,Fruits and Vegetables
+177,4.6,396,8,2.13,20,10,Fruits and Vegetables
+3054,4.26,406,6,1.79,15,10,Fruits and Vegetables
+611,4.51,607,6,2.12,15,7,Fruits and Vegetables
+2439,4.71,528,2,1.98,10,7,Fruits and Vegetables
+2366,4.23,584,8,1.51,60,7,Fruits and Vegetables
+3399,4.63,748,4,2.08,60,22,Fruits and Vegetables
+65,4.79,431,6,2.09,20,10,Fruits and Vegetables
+1565,4.23,578,5,1.62,20,9,Fruits and Vegetables
+3467,4.81,708,8,2.04,20,16,Fruits and Vegetables
+2318,4.53,462,4,2.09,25,16,Fruits and Vegetables
+287,4.48,303,6,1.96,10,6,Fruits and Vegetables
+1554,4.7,673,4,2.08,25,13,Fruits and Vegetables
+7262,4.4,444,4,1.79,15,8,Fruits and Vegetables
+5576,4.7,530,4,2.19,25,10,Fruits and Vegetables
+478,4.49,463,6,1.93,30,9,Fruits and Vegetables
+2012,4.42,526,8,1.89,15,4,Fruits and Vegetables
+4367,4.53,528,5,1.72,30,11,Fruits and Vegetables
+1099,4.36,603,5,1.97,15,9,Fruits and Vegetables
+1358,4.66,482,8,1.98,20,13,Fruits and Vegetables
+2975,4.46,548,8,2.07,5,7,Fruits and Vegetables
+870,4.18,511,8,1.59,20,6,Fruits and Vegetables
+4187,4.58,724,6,2.08,25,11,Fruits and Vegetables
+93,4.66,369,16,2.05,25,26,Fruits and Vegetables
+2799,4.34,568,4,1.93,15,17,Fruits and Vegetables
+2252,4.25,521,8,1.61,5,7,Fruits and Vegetables
+1840,4.48,557,16,1.71,30,8,Fruits and Vegetables
+28,4.45,487,10,1.9,25,7,Fruits and Vegetables
+2843,4.22,774,4,1.7,15,9,Fruits and Vegetables
+3257,4.51,399,6,2.0,25,12,Fruits and Vegetables
+4438,4.41,614,4,1.78,15,12,Fruits and Vegetables
+22,4.68,538,8,2.09,20,10,Fruits and Vegetables
+5071,4.59,695,4,1.87,15,5,Fruits and Vegetables
+685,4.54,916,6,1.96,15,16,Fruits and Vegetables
+4364,4.39,380,8,1.76,15,11,Fruits and Vegetables
+3386,4.54,296,6,2.07,10,12,Fruits and Vegetables
+1349,4.59,906,4,1.92,30,11,Fruits and Vegetables
+4688,4.61,643,4,2.12,20,6,Fruits and Vegetables
+1472,4.67,935,4,2.21,10,9,Fruits and Vegetables
+4057,4.3,399,8,1.91,30,12,Fruits and Vegetables
+855,4.45,668,6,1.75,10,6,Fruits and Vegetables
+1707,4.61,578,6,2.09,30,12,Fruits and Vegetables
+518,4.59,650,4,1.88,20,10,Fruits and Vegetables
+6126,3.92,668,6,1.42,15,12,Fruits and Vegetables
+595,4.44,730,4,1.79,15,11,Fruits and Vegetables
+1544,4.47,376,6,1.85,30,10,Fruits and Vegetables
+3594,4.6,837,6,1.94,20,12,Fruits and Vegetables
+680,4.52,423,6,1.87,15,10,Fruits and Vegetables
+3806,4.14,894,4,1.64,10,8,Fruits and Vegetables
+1296,4.48,404,6,1.75,10,5,Fruits and Vegetables
+1245,4.54,370,8,1.98,20,17,Fruits and Vegetables
+857,4.33,378,12,1.86,20,15,Fruits and Vegetables
+854,4.35,497,6,1.59,15,7,Fruits and Vegetables
+993,4.62,642,8,2.15,20,11,Fruits and Vegetables
+1552,4.75,559,4,1.88,45,15,Fruits and Vegetables
+506,4.5,366,8,1.74,25,10,Fruits and Vegetables
+23,4.64,385,2,2.17,20,11,Fruits and Vegetables
+247,4.71,309,6,1.96,20,7,Fruits and Vegetables
+202,4.82,707,6,2.37,30,13,Fruits and Vegetables
+765,4.45,647,4,1.98,25,12,Fruits and Vegetables
+392,4.5,375,6,1.95,20,10,Fruits and Vegetables
+491,4.57,490,4,2.16,25,9,Fruits and Vegetables
+1329,4.38,369,8,1.74,25,9,Fruits and Vegetables
+3929,4.47,328,6,1.76,15,12,Fruits and Vegetables
+902,4.15,403,6,1.53,20,6,Fruits and Vegetables
+120,4.43,614,6,1.75,10,9,Fruits and Vegetables
+1656,4.53,448,4,2.04,10,10,Fruits and Vegetables
+1251,4.14,720,6,1.79,15,8,Fruits and Vegetables
+3279,4.4,489,4,1.91,10,5,Fruits and Vegetables
+500,4.6,856,4,2.02,15,9,Fruits and Vegetables
+155,4.49,377,6,1.95,10,10,Fruits and Vegetables
+968,4.5,673,8,1.9,30,16,Fruits and Vegetables
+4786,4.42,310,4,1.93,15,6,Fruits and Vegetables
+1174,4.56,572,4,2.08,20,8,Fruits and Vegetables
+880,4.47,909,8,2.14,10,6,Fruits and Vegetables
+264,4.45,632,6,1.92,20,9,Fruits and Vegetables
+1548,4.67,400,6,2.23,20,11,Fruits and Vegetables
+317,4.22,280,4,1.71,15,9,Fruits and Vegetables
+519,4.63,519,4,2.16,10,11,Fruits and Vegetables
+583,4.6,496,1,1.77,10,10,Fruits and Vegetables
+293,4.82,562,15,1.99,10,6,Fruits and Vegetables
+102,4.49,383,6,1.66,10,7,Fruits and Vegetables
+4431,4.58,818,1,1.37,5,6,Fruits and Vegetables
+2226,4.04,866,6,1.82,10,4,Fruits and Vegetables
+1675,4.62,363,8,2.03,10,10,Fruits and Vegetables
+748,4.55,813,4,1.99,25,12,Fruits and Vegetables
+438,4.61,641,4,2.06,10,9,Fruits and Vegetables
+3319,4.57,339,4,2.24,20,12,Fruits and Vegetables
+3901,4.49,508,4,2.04,5,10,Fruits and Vegetables
+1419,4.57,362,8,2.18,5,6,Fruits and Vegetables
+90,4.46,821,8,2.04,15,13,Fruits and Vegetables
+3564,4.58,556,4,2.01,15,11,Fruits and Vegetables
+3444,4.2,626,8,1.62,45,10,Fruits and Vegetables
+389,4.38,548,4,1.78,10,5,Fruits and Vegetables
+815,4.6,718,6,2.08,30,13,Fruits and Vegetables
+2442,4.67,922,6,2.02,15,8,Fruits and Vegetables
+8090,4.48,355,6,2.08,20,10,Fruits and Vegetables
+459,4.27,352,12,1.6,10,7,Fruits and Vegetables
+1119,4.27,238,6,1.86,15,8,Fruits and Vegetables
+704,4.66,733,8,1.91,25,14,Fruits and Vegetables
+1507,4.48,601,4,1.94,15,10,Fruits and Vegetables
+557,4.72,656,6,2.28,15,10,Fruits and Vegetables
+1002,4.7,613,6,2.05,20,10,Fruits and Vegetables
+1193,4.22,711,6,1.78,15,8,Fruits and Vegetables
+1109,4.51,504,6,1.98,10,3,Meat and Poultry
+96,4.53,577,10,1.84,45,13,Meat and Poultry
+2640,4.51,516,4,1.8,10,10,Meat and Poultry
+3766,4.46,578,4,2.02,15,7,Meat and Poultry
+63,4.65,343,4,1.97,20,12,Meat and Poultry
+4232,4.1,529,6,1.72,20,8,Meat and Poultry
+4722,4.85,232,4,2.25,10,8,Meat and Poultry
+5025,4.18,364,6,1.73,15,6,Meat and Poultry
+2805,4.02,446,10,1.42,20,11,Meat and Poultry
+315,4.41,440,6,2.01,20,11,Meat and Poultry
+46,4.55,495,6,1.87,25,7,Meat and Poultry
+145,4.73,548,4,2.09,5,5,Meat and Poultry
+3528,4.61,547,6,2.06,60,11,Meat and Poultry
+1849,4.55,548,6,1.96,30,12,Meat and Poultry
+7011,4.34,615,6,2.1,10,13,Meat and Poultry
+1786,4.6,589,6,1.88,10,9,Meat and Poultry
+4059,4.6,415,4,2.05,20,10,Meat and Poultry
+3938,4.57,463,12,1.76,20,8,Meat and Poultry
+3210,4.49,542,10,2.17,15,6,Meat and Poultry
+5195,4.33,321,8,2.1,5,4,Meat and Poultry
+2537,3.88,645,6,1.71,10,5,Meat and Poultry
+5030,4.37,970,5,1.53,20,5,Meat and Poultry
+400,4.39,458,4,2.08,5,9,Meat and Poultry
+644,4.39,442,6,2.03,20,14,Meat and Poultry
+3686,4.51,293,10,1.55,15,7,Meat and Poultry
+655,4.45,464,8,1.97,15,12,Meat and Poultry
+133,4.49,360,6,1.96,10,7,Meat and Poultry
+4257,4.51,556,6,1.83,15,9,Meat and Poultry
+1983,4.67,291,6,1.96,15,8,Meat and Poultry
+445,4.45,374,4,1.99,10,6,Meat and Poultry
+314,4.38,644,5,1.95,10,7,Meat and Poultry
+3939,4.51,566,8,1.98,10,8,Meat and Poultry
+44,4.56,497,8,2.02,10,8,Meat and Poultry
+2168,4.35,508,6,1.97,20,11,Meat and Poultry
+8768,4.38,477,6,1.99,15,9,Meat and Poultry
+1665,4.49,466,6,2.15,20,7,Meat and Poultry
+1699,3.92,473,8,1.56,15,5,Meat and Poultry
+52,4.82,355,12,1.96,15,3,Meat and Poultry
+1650,4.72,663,4,2.04,30,21,Meat and Poultry
+816,4.43,639,6,1.99,20,6,Meat and Poultry
+2146,4.4,380,4,2.17,15,11,Meat and Poultry
+207,4.33,521,6,1.7,40,6,Meat and Poultry
+687,4.56,696,8,2.04,20,8,Meat and Poultry
+165,4.44,1024,6,1.84,5,5,Meat and Poultry
+865,4.22,385,8,1.4,15,12,Meat and Poultry
+47,4.5,781,4,2.04,20,13,Meat and Poultry
+3679,4.64,706,8,1.91,30,10,Meat and Poultry
+67,4.39,671,7,1.7,35,10,Meat and Poultry
+222,4.76,423,6,2.0,10,4,Meat and Poultry
+882,4.46,430,6,1.82,10,6,Meat and Poultry
+1290,4.63,527,8,1.86,15,14,Meat and Poultry
+1255,4.69,613,8,1.85,30,10,Meat and Poultry
+551,4.54,450,6,2.03,30,16,Meat and Poultry
+89,4.44,428,12,1.85,25,18,Meat and Poultry
+985,4.21,664,6,1.97,15,9,Meat and Poultry
+2670,4.83,998,8,2.37,10,9,Meat and Poultry
+965,4.35,422,4,1.85,10,6,Meat and Poultry
+920,4.34,370,8,1.69,10,12,Meat and Poultry
+3278,4.51,693,4,2.03,10,7,Meat and Poultry
+646,4.52,440,4,1.97,25,8,Meat and Poultry
+1512,4.51,459,4,2.26,10,6,Meat and Poultry
+75,4.7,709,8,1.99,45,17,Meat and Poultry
+7160,4.46,382,6,1.79,5,9,Meat and Poultry
+3702,3.95,432,4,1.33,15,11,Meat and Poultry
+1054,4.51,455,4,1.9,15,8,Meat and Poultry
+619,4.7,511,20,2.01,15,7,Meat and Poultry
+479,4.32,323,8,1.79,5,7,Meat and Poultry
+1747,4.88,441,4,2.32,30,5,Meat and Poultry
+1023,4.68,409,6,1.7,10,8,Meat and Poultry
+2808,4.5,520,6,1.76,15,9,Meat and Poultry
+391,4.39,452,5,1.83,45,10,Meat and Poultry
+300,4.72,489,12,2.0,30,13,Meat and Poultry
+5014,4.49,611,8,1.75,15,8,Meat and Poultry
+2070,4.41,336,4,1.82,15,11,Meat and Poultry
+197,4.56,457,6,2.04,10,5,Meat and Poultry
+225,4.4,502,4,1.78,15,7,Meat and Poultry
+1309,3.63,408,6,1.4,20,15,Meat and Poultry
+681,4.68,375,12,2.12,15,6,Meat and Poultry
+3003,4.61,402,4,2.02,10,10,Meat and Poultry
+4940,4.18,304,4,1.53,10,4,Meat and Poultry
+38,4.49,728,8,2.05,25,10,Meat and Poultry
+1344,4.36,704,6,1.91,20,11,Meat and Poultry
+566,4.74,586,8,2.07,10,10,Meat and Poultry
+907,4.56,440,8,1.77,15,8,Meat and Poultry
+909,4.26,565,8,1.81,20,7,Meat and Poultry
+813,4.46,456,4,1.79,10,5,Meat and Poultry
+3351,4.41,601,5,1.82,5,6,Meat and Poultry
+234,4.56,514,6,2.09,15,6,Meat and Poultry
+914,4.43,465,4,2.02,15,5,Meat and Poultry
+229,4.25,444,4,1.77,15,4,Meat and Poultry
+1724,4.65,419,4,2.06,10,6,Meat and Poultry
+912,4.67,467,2,1.79,5,13,Meat and Poultry
+1474,4.4,386,7,2.08,30,9,Meat and Poultry
+1052,4.67,290,10,2.0,10,6,Meat and Poultry
+453,3.73,696,4,1.26,10,9,Meat and Poultry
+79,4.82,415,8,2.17,20,13,Meat and Poultry
+1679,4.6,286,6,2.03,15,9,Meat and Poultry
+474,4.55,473,8,2.01,5,4,Meat and Poultry
+1360,4.6,352,8,1.92,20,9,Meat and Poultry
+1755,4.37,394,2,1.87,15,4,Meat and Poultry
+572,4.86,455,6,1.89,15,6,Meat and Poultry
+279,4.56,448,4,1.97,15,5,Meat and Poultry
+883,4.38,529,6,1.85,30,8,Meat and Poultry
+1274,4.44,568,6,1.9,10,6,Meat and Poultry
+2913,4.47,423,8,1.86,15,9,Meat and Poultry
+53,4.66,360,24,1.85,15,2,Meat and Poultry
+844,4.46,307,12,1.76,15,7,Meat and Poultry
+552,4.41,761,6,1.78,15,9,Meat and Poultry
+2564,4.58,565,6,2.02,20,6,Meat and Poultry
+2776,4.61,365,8,2.06,15,14,Meat and Poultry
+3047,4.78,504,8,2.04,15,10,Meat and Poultry
+1455,4.13,602,8,1.65,10,8,Meat and Poultry
+2720,4.61,397,8,2.25,10,9,Meat and Poultry
+2355,4.62,787,8,2.09,20,14,Meat and Poultry
+624,4.35,627,6,1.91,10,8,Meat and Poultry
+1012,4.19,1046,5,1.86,30,13,Meat and Poultry
+137,4.69,426,12,2.0,10,4,Meat and Poultry
+1328,4.1,807,4,1.57,10,5,Meat and Poultry
+2764,4.07,842,6,1.72,30,17,Meat and Poultry
+825,4.42,625,5,2.15,15,4,Meat and Poultry
+1891,4.52,318,8,1.87,10,10,Meat and Poultry
+199,4.67,287,4,1.97,5,5,Meat and Poultry
+625,4.55,619,6,1.94,15,10,Meat and Poultry
+894,4.05,576,6,1.84,20,10,Meat and Poultry
+2136,4.45,316,6,1.86,20,8,Meat and Poultry
+1132,4.38,409,6,2.01,15,6,Meat and Poultry
+558,4.53,585,4,2.03,20,3,Meat and Poultry
+14078,4.25,543,6,1.76,10,4,Meat and Poultry
+903,4.51,785,6,1.97,30,6,Meat and Poultry
+515,4.56,313,4,2.04,5,8,Meat and Poultry
+3077,4.64,664,8,2.06,30,17,Meat and Poultry
+913,4.68,145,24,1.94,15,7,Meat and Poultry
+6327,4.47,382,4,1.94,15,10,Meat and Poultry
+538,4.58,348,12,2.0,15,9,Meat and Poultry
+1379,4.4,488,8,1.69,30,5,Meat and Poultry
+1567,4.52,583,4,1.96,20,14,Meat and Poultry
+1513,4.29,448,10,1.55,25,6,Meat and Poultry
+1280,4.91,481,4,2.12,20,11,Meat and Poultry
+2896,4.24,440,4,1.72,15,11,Meat and Poultry
+308,4.18,468,6,1.7,15,8,Meat and Poultry
+2602,4.58,279,8,1.87,15,9,Meat and Poultry
+323,4.21,437,8,1.7,5,3,Meat and Poultry
+1124,4.59,998,8,1.9,10,5,Meat and Poultry
+3975,4.63,458,6,1.86,10,3,Meat and Poultry
+4086,4.39,375,8,1.98,30,11,Meat and Poultry
+457,4.55,709,7,1.88,60,16,Meat and Poultry
+851,4.25,619,4,1.61,20,9,Meat and Poultry
+1661,3.9,667,6,1.42,20,9,Meat and Poultry
+1404,4.48,388,8,1.98,15,9,Meat and Poultry
+2729,4.5,338,16,1.78,60,15,Meat and Poultry
+3229,4.51,430,8,2.07,15,11,Meat and Poultry
+4811,4.22,485,4,1.75,5,4,Meat and Poultry
+2931,4.16,555,6,1.64,10,5,Meat and Poultry
+45,4.43,565,4,1.86,20,7,Meat and Poultry
+2030,4.4,410,8,1.8,20,7,Meat and Poultry
+6245,4.66,544,4,2.28,5,8,Meat and Poultry
+3706,4.63,1096,4,2.11,20,9,Meat and Poultry
+6002,4.61,493,4,1.99,20,7,Meat and Poultry
+465,4.61,593,4,1.96,15,6,Meat and Poultry
+7393,4.28,450,6,1.74,15,5,Meat and Poultry
+1459,4.11,406,6,1.6,15,7,Meat and Poultry
+1543,4.63,403,4,2.12,5,6,Meat and Poultry
+1737,4.24,641,1,1.86,5,8,Meat and Poultry
+2106,4.46,735,6,1.89,30,11,Meat and Poultry
+4973,4.32,537,12,1.85,30,8,Meat and Poultry
+1654,4.26,518,4,2.02,15,5,Meat and Poultry
+555,4.65,521,15,1.97,20,5,Meat and Poultry
+1102,4.54,486,8,1.9,20,11,Meat and Poultry
+4993,4.34,641,4,1.86,15,15,Meat and Poultry
+1224,4.79,697,4,2.02,60,2,Meat and Poultry
+2714,4.35,624,8,1.96,20,9,Meat and Poultry
+3200,4.64,343,8,1.71,10,4,Meat and Poultry
+1480,4.5,638,4,2.03,25,10,Meat and Poultry
+290,4.52,299,8,2.01,5,4,Meat and Poultry
+2312,4.79,1453,4,2.23,15,8,Meat and Poultry
+3496,4.44,378,8,1.89,15,9,Meat and Poultry
+173,4.62,255,8,2.1,15,9,Meat and Poultry
+840,4.35,477,8,1.86,20,9,Meat and Poultry
+5053,4.49,555,6,1.5,5,4,Meat and Poultry
+850,4.6,385,6,1.84,15,9,Meat and Poultry
+877,4.49,498,8,1.86,30,16,Meat and Poultry
+1664,4.71,496,4,2.22,15,10,Meat and Poultry
+1666,4.56,907,4,2.14,20,10,Meat and Poultry
+6157,4.41,353,6,1.88,15,5,Meat and Poultry
+360,4.4,735,6,1.74,20,8,Meat and Poultry
+592,4.81,576,6,1.34,5,4,Meat and Poultry
+1393,4.47,554,4,1.87,10,5,Meat and Poultry
+2773,4.36,490,8,1.64,10,11,Meat and Poultry
+2738,3.91,491,6,1.59,10,7,Meat and Poultry
+1300,4.54,488,8,2.42,20,11,Meat and Poultry
+330,4.68,887,6,2.09,25,8,Meat and Poultry
+803,4.67,335,12,1.89,30,8,Meat and Poultry
+602,4.47,394,6,2.09,15,10,Meat and Poultry
+72,4.47,528,6,1.98,30,7,Meat and Poultry
+2692,4.63,509,6,2.15,35,21,Meat and Poultry
+140,4.57,353,8,2.02,20,10,Meat and Poultry
+1626,4.11,662,4,1.61,15,9,Meat and Poultry
+331,4.54,557,6,1.72,10,5,Meat and Poultry
+110,4.2,494,4,1.88,15,7,Meat and Poultry
+321,4.36,456,4,1.94,5,6,Meat and Poultry
+795,4.6,432,16,1.98,30,10,Meat and Poultry
+1303,4.19,731,4,1.87,25,6,Meat and Poultry
+995,4.51,483,4,2.06,15,7,Meat and Poultry
+2208,4.63,276,12,1.95,20,10,Meat and Poultry
+397,4.22,712,6,1.76,20,8,Meat and Poultry
+4126,4.13,522,4,1.78,15,3,Meat and Poultry
+2518,4.37,403,6,1.72,15,13,Meat and Poultry
+109,4.42,376,4,1.76,10,6,Meat and Poultry
+1150,4.6,507,8,1.94,25,11,Meat and Poultry
+11895,4.73,615,4,1.97,20,12,Meat and Poultry
+683,4.12,321,5,1.44,5,4,Meat and Poultry
+675,4.48,385,8,2.19,30,7,Meat and Poultry
+1267,4.46,308,6,2.02,20,7,Meat and Poultry
+886,4.42,538,6,1.93,15,10,Meat and Poultry
+3030,4.48,354,4,2.1,5,7,Meat and Poultry
+1405,4.37,589,6,1.67,25,15,Meat and Poultry
+1658,4.72,761,8,1.76,20,9,Meat and Poultry
+2110,4.33,449,8,1.84,20,10,Meat and Poultry
+324,4.3,557,4,1.74,15,5,Meat and Poultry
+1259,4.76,472,8,2.16,20,10,Meat and Poultry
+1234,4.42,602,4,2.03,15,4,Meat and Poultry
+890,4.39,458,4,1.79,15,16,Meat and Poultry
+498,4.51,388,4,2.24,20,8,Meat and Poultry
+231,4.63,368,6,2.15,10,12,Meat and Poultry
+2151,4.3,557,6,1.78,20,6,Meat and Poultry
+1967,4.44,548,4,1.84,10,3,Meat and Poultry
+822,4.51,791,4,1.78,20,13,Meat and Poultry
+135,4.53,407,8,1.73,20,11,Meat and Poultry
+3287,4.66,684,6,2.17,30,9,Meat and Poultry
+431,4.4,460,6,1.56,10,7,Meat and Poultry
+5462,4.5,491,6,2.17,15,9,Meat and Poultry
+910,4.5,468,4,2.08,10,5,Meat and Poultry
+1556,4.55,300,4,1.97,15,12,Meat and Poultry
+4349,4.52,484,6,1.74,5,4,Meat and Poultry
+418,4.35,393,6,1.92,15,6,Meat and Poultry
+4192,4.32,293,4,2.02,30,4,Meat and Poultry
+4603,4.64,417,4,2.16,10,8,Meat and Poultry
+725,4.73,494,8,2.06,45,15,Meat and Poultry
+2957,4.05,679,4,1.4,20,5,Meat and Poultry
+1946,4.26,368,4,1.75,10,4,Meat and Poultry
+869,4.36,687,8,1.64,20,6,Meat and Poultry
+6362,4.16,383,8,1.81,10,3,Meat and Poultry
+19,4.34,526,6,1.79,15,11,Meat and Poultry
+11572,4.8,737,6,2.16,45,16,Meat and Poultry
+1028,4.63,387,6,1.97,15,8,Meat and Poultry
+6356,4.28,683,6,2.06,15,6,Meat and Poultry
+4422,4.62,610,6,1.9,10,5,Meat and Poultry
+2294,4.69,607,6,1.97,15,8,Meat and Poultry
+656,4.61,304,8,1.93,30,11,Meat and Poultry
+203,4.77,448,12,2.04,30,21,Meat and Poultry
+1291,4.63,416,12,1.95,15,8,Meat and Poultry
+1422,3.97,393,6,1.62,15,10,Meat and Poultry
+131,4.79,584,6,2.21,15,10,Meat and Poultry
+446,4.28,313,4,1.83,20,15,Meat and Poultry
+15746,4.4,556,8,2.07,20,5,Meat and Poultry
+691,4.37,495,6,1.9,30,6,Meat and Poultry
+859,4.24,491,10,1.76,15,4,Meat and Poultry
+248,4.44,372,8,1.98,10,8,Meat and Poultry
+996,4.58,528,2,2.04,30,6,Meat and Poultry
+1698,4.43,513,6,2.13,15,6,Meat and Poultry
+50,4.68,578,10,1.97,20,8,Meat and Poultry
+4154,4.43,368,4,1.89,25,9,Meat and Poultry
+1625,4.31,682,5,1.46,5,6,Seafood Pasta and Noodles
+1602,4.52,331,4,1.97,10,4,Seafood Pasta and Noodles
+1076,4.5,490,4,2.1,10,12,Seafood Pasta and Noodles
+731,4.66,795,4,2.16,20,9,Seafood Pasta and Noodles
+987,4.58,646,8,1.98,15,7,Seafood Pasta and Noodles
+108,4.52,422,4,2.04,20,8,Seafood Pasta and Noodles
+112,4.54,326,8,1.8,10,8,Seafood Pasta and Noodles
+99,4.51,308,6,1.89,10,14,Seafood Pasta and Noodles
+964,4.47,368,4,1.99,10,8,Seafood Pasta and Noodles
+934,4.64,613,2,2.17,15,8,Seafood Pasta and Noodles
+4420,4.38,561,4,1.92,5,4,Seafood Pasta and Noodles
+1286,4.33,861,4,1.82,5,7,Seafood Pasta and Noodles
+468,4.34,611,6,1.6,15,8,Seafood Pasta and Noodles
+1386,4.46,441,5,1.75,10,8,Seafood Pasta and Noodles
+891,4.28,469,8,1.86,15,5,Seafood Pasta and Noodles
+3700,4.61,626,4,2.1,15,12,Seafood Pasta and Noodles
+458,4.59,420,6,2.06,30,6,Seafood Pasta and Noodles
+480,4.3,670,6,1.8,10,6,Seafood Pasta and Noodles
+961,4.55,511,4,1.85,15,11,Seafood Pasta and Noodles
+3705,4.37,607,6,1.86,15,11,Seafood Pasta and Noodles
+5003,4.26,571,12,1.92,15,7,Seafood Pasta and Noodles
+1924,4.65,592,2,1.61,15,4,Seafood Pasta and Noodles
+4932,4.44,498,4,1.99,10,4,Seafood Pasta and Noodles
+283,4.6,792,4,2.09,25,13,Seafood Pasta and Noodles
+1649,4.57,964,6,1.95,15,6,Seafood Pasta and Noodles
+2575,4.39,854,4,1.93,10,7,Seafood Pasta and Noodles
+66,4.51,442,5,2.15,45,13,Seafood Pasta and Noodles
+334,4.66,557,8,2.25,25,10,Seafood Pasta and Noodles
+1538,4.64,795,4,2.04,10,7,Seafood Pasta and Noodles
+917,4.45,492,24,1.91,15,6,Seafood Pasta and Noodles
+3411,4.44,344,6,1.84,30,15,Seafood Pasta and Noodles
+509,4.42,430,8,1.96,10,8,Seafood Pasta and Noodles
+716,4.45,561,6,1.81,10,10,Seafood Pasta and Noodles
+346,4.04,544,6,1.24,20,11,Seafood Pasta and Noodles
+922,4.08,858,4,1.45,20,9,Seafood Pasta and Noodles
+5752,4.11,344,4,1.84,5,6,Seafood Pasta and Noodles
+674,4.55,550,10,1.99,30,10,Seafood Pasta and Noodles
+3866,4.18,695,6,1.65,10,14,Seafood Pasta and Noodles
+433,4.21,641,6,1.72,20,12,Seafood Pasta and Noodles
+183,4.71,725,6,2.3,25,8,Seafood Pasta and Noodles
+153,4.43,463,6,1.77,15,9,Seafood Pasta and Noodles
+4741,4.45,439,7,2.21,25,8,Seafood Pasta and Noodles
+610,4.37,703,7,1.87,15,6,Seafood Pasta and Noodles
+285,4.24,591,6,1.72,10,7,Seafood Pasta and Noodles

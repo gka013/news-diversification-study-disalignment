@@ -1,0 +1,213 @@
+{% extends 'Labels_Nudges/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+  /* [Your existing styles are perfect and don't need to be changed] */
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #333; background-color: #f9f9f9;
+  }
+  .error {
+    color: #c00;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  .hero {
+    background: linear-gradient(180deg, #fafafa 0%, #fff 60%);
+    text-align: center;
+    padding: 60px 20px 80px;
+    position: relative;
+  }
+  .hero img {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+  }
+  .container-home {
+    max-width: 700px;
+    margin: -40px auto 0;
+    position: relative;
+    z-index: 1;
+  }
+  .welcome-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  .welcome-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  .welcome-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .countdown-banner {
+    background: #e7f3ff;
+    border: 1px solid #b3d7ff;
+    color: #0366d6;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .countdown-banner a {
+    color: #004a9f;
+    text-decoration: underline;
+  }
+  .prolific-input {
+    width: 100%; max-width: 300px;
+    margin: 0 auto 20px;
+    padding: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  .btn-start {
+    font-size: 1rem; font-weight: 600; color: #007bff;
+    border: 2px solid #007bff; border-radius: 8px;
+    padding: 12px 36px; background: transparent;
+    transition: background-color .3s, color .3s, box-shadow .2s;
+  }
+  .btn-start:hover {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .footer-note {
+    font-size: .85rem; color: #666;
+    margin-top: 30px; line-height: 1.4;
+  }
+  .footer-note a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  .footer-note a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="hero">
+  <img src="{% static 'icon/icon4.jpeg' %}" alt="Study Logo">
+  <h1>News Preference Study</h1>
+</div>
+
+<div class="container-home">
+  <div class="welcome-card">
+    <h2>Welcome!</h2>
+    <p>
+      Thank you for joining our longitudinal news‐preferences study. This research is led
+      by Gloria Anne Babile Kasangu (UiB), supervised by Alain Dominique Starke (UvA)
+      and Prof. Christoph Trattner (UiB).
+    </p>
+
+    {% if next_url %}
+      <div id="wait-banner" class="countdown-banner">
+        <span id="wait-message"></span>
+        <div id="redirect-link" style="display: none;">
+          <small>(Or <a href="{{ next_url }}">click here</a> to continue immediately.)</small>
+        </div>
+      </div>
+
+      <script>
+        (function() {
+          const delayMs = {{ delay_ms|default:0 }};
+          const nextUrl = "{{ next_url }}";
+
+          // Set a threshold (e.g., 60 seconds) to differentiate short vs. long waits
+          const longWaitThreshold = 60000;
+
+          const messageEl = document.getElementById('wait-message');
+          const redirectLinkEl = document.getElementById('redirect-link');
+
+          if (delayMs > longWaitThreshold) {
+            // --- LONG WAIT LOGIC ---
+            // Don't redirect automatically. Just show a formatted message.
+            let remainingSeconds = Math.round(delayMs / 1000);
+
+            const days = Math.floor(remainingSeconds / (3600 * 24));
+            remainingSeconds %= (3600 * 24);
+            const hours = Math.floor(remainingSeconds / 3600);
+            remainingSeconds %= 3600;
+            const minutes = Math.floor(remainingSeconds / 60);
+
+            let parts = [];
+            if (days > 0) parts.push(`${days} day${days !== 1 ? 's' : ''}`);
+            if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? 's' : ''}`);
+            if (minutes > 0 && days === 0) parts.push(`${minutes} minute${minutes !== 1 ? 's' : ''}`);
+
+            messageEl.innerHTML = `<strong>Please return in about ${parts.join(', ')}.</strong>`;
+
+          } else if (delayMs > 0) {
+            // --- SHORT WAIT LOGIC ---
+            // Show the second-by-second countdown and then redirect.
+            let timeLeft = Math.round(delayMs / 1000);
+
+            const updateCountdown = () => {
+              messageEl.innerHTML = `Redirecting you in <strong>${timeLeft}</strong> seconds…`;
+            };
+
+            updateCountdown(); // Show initial value
+            redirectLinkEl.style.display = 'block';
+
+            const interval = setInterval(() => {
+              timeLeft--;
+              updateCountdown();
+              if (timeLeft <= 0) {
+                clearInterval(interval);
+              }
+            }, 1000);
+
+            setTimeout(() => {
+              window.location.href = nextUrl;
+            }, delayMs);
+
+          } else {
+            // --- NO WAIT ---
+            // Redirect immediately if delay is zero or less.
+            window.location.href = nextUrl;
+          }
+        })();
+      </script>
+
+    {% else %}
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <form method="POST" action="">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="prolific_pid"
+          value="{{ prefill_pid|default:'' }}"
+          placeholder="Your Prolific ID"
+          class="prolific-input"
+          required
+        />
+        <br>
+        <button type="submit" class="btn-start">Continue</button>
+      </form>
+    {% endif %}
+
+    <div class="footer-note">
+      <p>
+        * Your responses are anonymous and used only for scientific publications.
+        For questions, contact <a href="mailto:gka013@uib.no">gka013@uib.no</a>.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
