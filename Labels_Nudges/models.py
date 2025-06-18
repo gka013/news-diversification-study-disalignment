@@ -250,6 +250,7 @@ class Ghs_fk2(models.Model):
     # keep your session id and title as before
     session_id = models.CharField(max_length=100)
     title = models.CharField(max_length=50, editable=False, default='Ghs_fk2')
+    prolific_id = models.CharField(max_length=100, blank=True, null=True)
 
     # ←— new JSONField to accumulate each round’s responses
     iterations = models.JSONField(

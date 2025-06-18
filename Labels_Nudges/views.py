@@ -281,35 +281,47 @@ def topic_preference(request):
         return redirect('Labels_Nudges:home')
     person = get_object_or_404(Personal_info, id=pid)
 
-    # If they've finished Phase 2, skip forever
+    # If they've finished Phase 2, they shouldn't be here. Redirect to the end.
     if person.phase_two_complete:
-        return redirect('Labels_Nudges:choice_evaluation2')
+        return redirect('Labels_Nudges:thank_u')  # Or wherever your final page is
 
-    # 1) Load or create the one pref‐row
+    # Load or create the one preference record for this person
     tp, created = Topic_preference.objects.get_or_create(person=person)
 
     if request.method == 'POST':
         form = Topic_preferenceForm(request.POST, instance=tp)
         if form.is_valid():
-            # 2) Dump all the cleaned data into a dict
-            prefs = {
+            # --- THIS IS THE NEW, ROBUST LOGIC ---
+
+            # 1. Get the latest preferences from the form
+            latest_prefs = {
                 k: v for k, v in form.cleaned_data.items()
-                if k not in ('csrfmiddlewaretoken, history, session_id')
+                if k not in ('csrfmiddlewaretoken', 'history', 'session_id')
             }
 
-            # 3) Build & append a timestamped history entry
-            entry = {
+            # 2. Build the new entry with a timestamp
+            new_entry = {
                 'timestamp': timezone.now().isoformat(),
-                'preferences': prefs
+                'preferences': latest_prefs
             }
-            history = tp.history or []
-            history.append(entry)
 
-            # 4) Save the latest fields + updated history
+            # 3. Load the history, ensuring it's a dictionary
+            history = tp.history or {}
+            if not isinstance(history, dict):
+                history = {}  # Overwrite if it's an old list format
+
+            # 4. Determine which phase this submission belongs to and save it.
+            #    This automatically overwrites any previous submission for the SAME phase.
+            if not person.phase_one_complete:
+                history['phase_1'] = new_entry
+            else:
+                history['phase_2'] = new_entry
+
+            # 5. Save the updated fields and the new history structure
             tp = form.save(commit=False)
             tp.history = history
 
-            # preserve your session token logic
+            # Preserve your session token logic
             session_token = request.session.get('participant_session_id')
             if not session_token:
                 rnd = ''.join(random.choices(string.ascii_lowercase, k=5))
@@ -320,7 +332,7 @@ def topic_preference(request):
 
             tp.save()
 
-            # 5) Redirect into the right evaluation
+            # 6. Redirect to the correct evaluation view
             if not person.phase_one_complete:
                 return redirect('Labels_Nudges:choice_evaluation')
             else:
@@ -333,7 +345,6 @@ def topic_preference(request):
     return render(request, 'Labels_Nudges/topic_preference.html', {
         'form': form
     })
-
 
 def ghs_fk(request):
     try:
@@ -842,10 +853,15 @@ def ghs_fk2(request):
     person = get_object_or_404(Personal_info, id=pid)
 
     # 1) Fetch-or-create our one Ghs_fk2 row
+    # --- MODIFIED: Added prolific_id to the creation defaults ---
     ghs, created = Ghs_fk2.objects.get_or_create(
         person=person,
-        defaults={'session_id': request.session.get('participant_session_id', '')}
+        defaults={
+            'session_id': request.session.get('participant_session_id', ''),
+            'prolific_id': person.prolific_username  # Sets it on creation
+        }
     )
+    # -----------------------------------------------------------
 
     # 2) How many rounds have we already done?
     done = len(ghs.iterations)
@@ -874,12 +890,19 @@ def ghs_fk2(request):
             }
             ghs.iterations.append(entry)
             ghs.session_id = request.session.get('participant_session_id', '')
+
+            # --- ADDED THIS LINE, as per the guide ---
+            # Ensures the prolific_id is always up-to-date on every save.
+            ghs.prolific_id = person.prolific_username
+            # ----------------------------------------
+
             ghs.save()
 
             # 4) Mark the right phase flag and issue code
             if current_phase == 1:
                 person.phase_one_complete = True
                 person.redemption_code_phase1 = generate_redemption_code()
+                person.last_home = timezone.now()  # Start the 2-day clock now
                 person.save()
                 # After round 1, go to redemption for phase 1
                 return redirect('Labels_Nudges:redemption', phase=1)
@@ -900,7 +923,6 @@ def ghs_fk2(request):
         'current_phase': current_phase,
         'max_phases': MAX_PHASES,
     })
-
 
 # ── Configure your two “complete” URLs here ────────────────────────
 COMPLETION_LINKS = {
