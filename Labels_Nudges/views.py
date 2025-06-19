@@ -887,6 +887,7 @@ def ghs_fk2(request):
         'max_phases': MAX_PHASES,
     })
 
+
 COMPLETION_LINKS = {
     1: "https://app.prolific.com/submissions/complete?cc=CBH7XMCP",  # Phase1completioncode
     2: "https://app.prolific.com/submissions/complete?cc=C11P51U2"  # Phase2completioncode
