@@ -11,7 +11,8 @@ from sys import prefix
 from django import forms
 from django.forms import formset_factory
 from django.db.models import Count
-from datetime import datetime as dt, timedelta
+from datetime import datetime, timedelta
+from datetime import timezone as dt_timezone
 from django.utils import timezone as django_timezone
 from requests.exceptions import HTTPError
 from .recommender import get_phase2_feed_custom
@@ -254,7 +255,7 @@ def personal_info(request):
             pi.prolific_username = pid
 
             # 4) Generate and save a session_id
-            now = dt.now().strftime('%H%M%S')
+            now = datetime.now().strftime('%H%M%S')
             rnd = ''.join(random.choice(string.ascii_lowercase) for _ in range(5))
             pi.session_id = f'dars{now}_{pid}_{rnd}'
 
@@ -346,6 +347,7 @@ def topic_preference(request):
         'form': form
     })
 
+
 def ghs_fk(request):
     try:
         print("Entering ghs_fk function")
@@ -401,7 +403,7 @@ def ghs_fk(request):
             if ghs_fk_form.is_valid():
                 answer = ghs_fk_form.save(commit=False)
                 rd_str = ''.join(random.choice(string.ascii_lowercase) for _ in range(5))
-                time_now = dt.now().strftime('%H%M%S')
+                time_now = datetime.now().strftime('%H%M%S')
                 gene_session = f'dars{time_now}_{answer.id}_{rd_str}'
                 ghs_fk_form.instance.session_id = gene_session
                 ghs_fk_form.instance.person_id = request.session['person_id']
@@ -497,7 +499,7 @@ def choice_evaluation(request):
         if raw_start:
             try:
                 ms = int(raw_start)
-                phase1_start = dt.fromtimestamp(ms / 1000.0, tz=django_timezone.utc)
+                phase1_start = datetime.datetime.fromtimestamp(ms / 1000.0, tz=dt_timezone.utc)
             except:
                 phase1_start = None
 
@@ -684,95 +686,82 @@ def get_phase2_feed_by_score(person, days_back=1, page_size=30):
 
 
 def choice_evaluation2(request):
-    # 1) Participant and Route Guards (These run on EVERY request, which is correct)
+    # 1) Standard Participant and Route Guards
     pid = request.session.get('person_id')
     if not pid:
         return redirect('Labels_Nudges:home')
     person = get_object_or_404(Personal_info, id=pid)
 
-    if not Topic_preference.objects.filter(person_id=pid).exists():
-        return redirect('Labels_Nudges:topic_preference')
     if not person.phase_one_complete:
         return redirect('Labels_Nudges:choice_evaluation')
-    if not person.redemption_code_phase1:
-        return redirect('Labels_Nudges:redemption', phase=1)
     if person.phase_two_complete:
         return redirect('Labels_Nudges:thank_u')
 
-    # ----------------------------------------------------------------------------------
-    # 2) POST Request Logic: Handle the user's form submission
-    # This block only runs when the user clicks "Next" and submits the form.
-    # ----------------------------------------------------------------------------------
+    # 2) POST Request Logic
     if request.method == 'POST':
-        # A) CRITICAL: Retrieve the feed that was *originally shown* to the user from the session.
-        # Do NOT generate a new feed. This is the key to fixing the mismatch.
         phase2_articles = request.session.get('phase2_articles', [])
-
-        # B) Parse timing data from the submitted form
         raw_start = request.POST.get('phase2_start')
         raw_elapsed = request.POST.get('phase2_elapsed')
-        elapsed2 = int(raw_elapsed) if raw_elapsed and raw_elapsed.isdigit() else None
-        phase2_start = dt.fromtimestamp(int(raw_start) / 1000.0,
-                                        tz=django_timezone.utc) if raw_start and raw_start.isdigit() else None
-
-        # C) Parse the bookmarked article IDs from the submitted form
-        raw_saved_articles = request.POST.get('saved_articles', '[]')
         try:
-            saved_ids = json.loads(raw_saved_articles)
+            elapsed2 = int(raw_elapsed)
+        except (TypeError, ValueError):
+            elapsed2 = None
+
+        # Parse start timestamp into UTC-aware datetime
+        phase2_start = None
+        if raw_start and raw_start.isdigit():
+            ms = int(raw_start)
+            phase2_start = datetime.fromtimestamp(ms / 1000.0, tz=dt_timezone.utc)
+
+        raw_saved = request.POST.get('saved_articles', '[]')
+        try:
+            saved_ids = json.loads(raw_saved)
         except json.JSONDecodeError:
             saved_ids = []
-        request.session['saved_articles'] = saved_ids  # Store the final choices
+        request.session['saved_articles'] = saved_ids
 
-        # D) Build click_data by comparing saved IDs against the original session feed
         click_data = []
         for sid in saved_ids:
-            # This lookup will now succeed because phase2_articles is the correct list
-            art = next((a for a in phase2_articles if str(a['id']) == str(sid)), None)
+            art = next((a for a in phase2_articles if str(a.get('id')) == str(sid)), None)
             if not art:
                 logger.warning("Phase2 clicked id %s not in session feed for person %s. Skipping.", sid, pid)
                 continue
 
             topics = []
-            if art.get("topic"):
-                topics.append(art["topic"])
-            theme = art.get("nlp", {}).get("theme")
+            if art.get('topic'):
+                topics.append(art['topic'])
+            theme = art.get('nlp', {}).get('theme')
             if theme:
                 topics.append(theme)
 
             click_data.append({
-                "id": str(sid),
-                "title": art.get("title", ""),
-                "similarity": art.get("score", 0.0),
-                "explore": art.get("explore", False),
-                "source": art.get("source_name") or art.get("clean_url") or "",
-                "topics": topics,
-                "clicked_at": django_timezone.now().isoformat(),
+                'id': str(sid),
+                'title': art.get('title', ''),
+                'similarity': art.get('score', 0.0),
+                'explore': art.get('explore', False),
+                'source': art.get('source_name') or art.get('clean_url') or '',
+                'topics': topics,
+                'clicked_at': django_timezone.now().isoformat(),
             })
 
         total_clicked = len(click_data)
-        familiar_count = sum(1 for c in click_data if not c.get("explore"))
-        percent_familiar = round(familiar_count / total_clicked * 100, 1) if total_clicked else 0.0
+        familiar = sum(1 for c in click_data if not c.get('explore'))
+        percent_familiar = round(familiar / total_clicked * 100, 1) if total_clicked else 0.0
 
-        logger.debug("Phase 2 click_data for person %s (%d clicks): %s", pid, total_clicked, click_data)
-
-        # E) Persist the final click data to the database
-        click_obj, created = ArticleClick.objects.update_or_create(
+        ArticleClick.objects.update_or_create(
             person=person,
             phase=2,
             defaults={
-                "session_id": request.session.session_key or '',
-                "click_data": click_data,
-                "clicked_at": django_timezone.now(),
-                "phase2_start": phase2_start,
-                "phase2_elapsed": elapsed2,
-                "percent_familiar": percent_familiar,
-                "total_clicked": total_clicked,
+                'session_id': request.session.session_key or '',
+                'click_data': click_data,
+                'clicked_at': django_timezone.now(),
+                'phase2_start': phase2_start,
+                'phase2_elapsed': elapsed2,
+                'percent_familiar': percent_familiar,
+                'total_clicked': total_clicked,
             }
         )
-        verb = "Created" if created else "Updated"
-        logger.info("%s ArticleClick(id=%s) for Phase 2 (Person: %s): %d items", verb, click_obj.id, pid, total_clicked)
 
-        # F) Handle the final evaluation form and complete Phase 2
         form = ChoiceEvaluationForm2(request.POST)
         if form.is_valid():
             ev = form.save(commit=False)
@@ -781,60 +770,34 @@ def choice_evaluation2(request):
             ev.save()
 
             person.phase_two_complete = True
-            person.redemption_code_phase2 = generate_redemption_code()  # Ensure this function is imported/defined
+            person.redemption_code_phase2 = generate_redemption_code()
             person.save()
             return redirect('Labels_Nudges:ghs_fk2')
         else:
-            # If the final form has errors, re-render the page with the errors shown.
-            # It's important to pass the original articles and form back to the template.
             messages.error(request, "There was an error in the form below. Please correct it.")
-            return render(request, "Labels_Nudges/choice_evaluation2.html", {
-                'articles': phase2_articles,  # Use the list from the session
-                'form': form,  # The form with error messages
+            return render(request, 'Labels_Nudges/choice_evaluation2.html', {
+                'articles': phase2_articles,
+                'form': form,
                 'saved_articles_json': json.dumps(saved_ids),
             })
 
-    # ----------------------------------------------------------------------------------
-    # 3) GET Request Logic: Prepare and display the page for the first time
-    # This block only runs when the user first loads the page.
-    # ----------------------------------------------------------------------------------
-    else:
-        try:
-            # A) Generate the custom Phase 2 feed ONCE.
-            feed = get_phase2_feed_custom(request, person, days_back=1, page_size=30)
+    # 3) GET Request Logic
+    try:
+        feed = get_phase2_feed_custom(request, person, days_back=1, page_size=100)
+        request.session['phase2_articles'] = feed
+        request.session['saved_articles'] = []
+        logger.info(f"Generated Phase 2 feed for person {pid} with {len(feed)} items.")
+    except Exception as e:
+        logger.exception(f"Fatal error building Phase 2 feed for person {pid}: {e}")
+        messages.error(request, "Sorry, we couldn’t load your personalized feed right now.")
+        return redirect('Labels_Nudges:topic_preference')
 
-            # B) Remove duplicates
-            seen = set()
-            unique = []
-            for art in feed:
-                if art['id'] not in seen:
-                    seen.add(art['id'])
-                    unique.append(art)
-            feed = unique
-
-            # C) Store this definitive feed in the session. It's now "frozen" for this visit.
-            request.session['phase2_articles'] = feed
-            request.session['saved_articles'] = []  # Reset bookmarks on a fresh page load
-
-            logger.debug(
-                "Generated Phase 2 feed for person %s (%d items): %s",
-                pid, len(feed), [{'id': a['id'], 'score': a.get('score'), 'explore': a.get('explore')} for a in feed]
-            )
-
-        except Exception as e:
-            logger.exception("Fatal error building Phase 2 feed for person %s: %s", pid, e)
-            messages.error(request, "Sorry, we couldn’t load your personalized feed right now.")
-            return redirect('Labels_Nudges:topic_preference')
-
-        # D) Prepare an empty form for the user
-        form = ChoiceEvaluationForm2()
-
-        # E) Render the page template with the new feed and empty form
-        return render(request, "Labels_Nudges/choice_evaluation2.html", {
-            'articles': feed,
-            'form': form,
-            'saved_articles_json': json.dumps([]),
-        })
+    form = ChoiceEvaluationForm2()
+    return render(request, 'Labels_Nudges/choice_evaluation2.html', {
+        'articles': feed,
+        'form': form,
+        'saved_articles_json': json.dumps([]),
+    })
 
 
 def generate_redemption_code(length=8):
@@ -924,12 +887,11 @@ def ghs_fk2(request):
         'max_phases': MAX_PHASES,
     })
 
-# ── Configure your two “complete” URLs here ────────────────────────
 COMPLETION_LINKS = {
-    1: "https://app.prolific.com/submissions/complete?cc=CBH7XMCP",  # Phase 1 completion code
-    2: "https://app.prolific.com/submissions/complete?cc=C11P51U2"  # Phase 2 completion code
+    1: "https://app.prolific.com/submissions/complete?cc=CBH7XMCP",  # Phase1completioncode
+    2: "https://app.prolific.com/submissions/complete?cc=C11P51U2"  # Phase2completioncode
 }
-# ─────────────────────────────────────────────────────────────────
+
 
 def redemption(request, phase):
     pid = request.session.get('person_id')
@@ -943,7 +905,7 @@ def redemption(request, phase):
     # 2) Mark them complete in your DB
     code_field = f"redemption_code_phase{phase}"
     setattr(person, code_field, prolific_id)
-    setattr(person, f"phase_{['one','two','three'][phase-1]}_complete", True)
+    setattr(person, f"phase_{['one', 'two', 'three'][phase - 1]}_complete", True)
     person.save()
     logger.info("Person %s completed phase %d, code=%s", pid, phase, prolific_id)
 
@@ -956,7 +918,7 @@ def redemption(request, phase):
         complete_url = f"{base}"
 
     # 4) Clear out news‐related session state
-    for k in ('selected_articles','selected_article_ids','article_clusters','saved_articles'):
+    for k in ('selected_articles', 'selected_article_ids', 'article_clusters', 'saved_articles'):
         request.session.pop(k, None)
 
     # 5) Decide what your “internal next” is
@@ -968,11 +930,11 @@ def redemption(request, phase):
         next_phase = None
 
     return render(request, 'Labels_Nudges/redemption.html', {
-        'current_phase':    phase,
-        'next_phase_num':   next_phase,
-        'next_view_name':   next_view,
-        'prolific_code':    prolific_id,
-        'complete_url':     complete_url,
+        'current_phase': phase,
+        'next_phase_num': next_phase,
+        'next_view_name': next_view,
+        'prolific_code': prolific_id,
+        'complete_url': complete_url,
     })
 
 
@@ -1405,3 +1367,4 @@ def error_404(request, exception):
 def error_500(request):
     data = {}
     return render(request, 'Labels_Nudges/404.html', data)
+# Forcing a change for git
